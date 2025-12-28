@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { stats } from "@/lib/constants";
+import { stats, benefits } from "@/lib/constants";
 
 export default function WhyChooseUs() {
   return (
@@ -11,38 +11,10 @@ export default function WhyChooseUs() {
         </h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          {/* Left Side - Benefits with Image */}
-          <div className="relative">
-            <div className="relative h-[400px] sm:h-[500px] lg:h-[657px] rounded-[37px] overflow-hidden shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
-              <Image
-                src="/svgs/why-choose-us-img.svg"
-                alt="Why Choose Us"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
-            {/* Benefits List */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0c456b] to-transparent p-6 lg:p-8">
-              <ul className="space-y-3 lg:space-y-4">
-                {[
-                  "Proven Expertise",
-                  "Client-Focused Approach",
-                  "End-to-End Services",
-                  "Fast Delivery",
-                  "Quality & Precision",
-                ].map((benefit, index) => (
-                  <li
-                    key={index}
-                    className="text-white text-xl sm:text-2xl lg:text-[32px] font-extrabold font-poppins"
-                  >
-                    {benefit}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {/* Icon */}
-            <div className="absolute top-4 left-4 w-24 h-24 lg:w-28 lg:h-28">
+          {/* Left Side - Benefits Card */}
+          <div className="bg-[#0c456b] rounded-[37px] p-8 lg:p-12 flex flex-col items-center justify-center text-center shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] min-h-[400px] sm:min-h-[500px] lg:min-h-[657px]">
+            {/* Icon - Centered at top */}
+            <div className="relative w-24 h-24 lg:w-32 lg:h-32 mb-8 lg:mb-12">
               <Image
                 src="http://localhost:3845/assets/fc514b54acc302eae6053bfb7130df405663bcbc.svg"
                 alt="Icon"
@@ -50,6 +22,18 @@ export default function WhyChooseUs() {
                 className="object-contain"
               />
             </div>
+
+            {/* Benefits List - Centered */}
+            <ul className="space-y-4 lg:space-y-6 flex-1 flex flex-col justify-center">
+              {benefits.map((benefit, index) => (
+                <li
+                  key={index}
+                  className="text-white text-xl sm:text-2xl lg:text-[32px] font-extrabold font-poppins"
+                >
+                  {benefit}
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Right Side - Stats Cards */}
