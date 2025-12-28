@@ -101,10 +101,34 @@ export default function Footer() {
             © {new Date().getFullYear()} DevsGuard. All rights reserved.
           </p>
           <div className="flex items-center space-x-4">
-            <div className="relative w-[122px] h-[22px]">
+            <div className="relative w-[22px] h-[22px]">
               <Image
-                src="/icons.svg"
-                alt="Social Media Icons"
+                src="/svgs/twitter.svg"
+                alt="Twitter"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <div className="relative w-[22px] h-[22px]">
+              <Image
+                src="/svgs/linkedin.svg"
+                alt="LinkedIn"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <div className="relative w-[22px] h-[22px]">
+              <Image
+                src="/svgs/google.svg"
+                alt="Google"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <div className="relative w-[22px] h-[22px]">
+              <Image
+                src="/svgs/facebook.svg"
+                alt="Facebook"
                 fill
                 className="object-contain"
               />
