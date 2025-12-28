@@ -1,22 +1,25 @@
-import Link from 'next/link';
-import Image from 'next/image';
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   const footerLinks = {
     column1: [
-      { name: 'Many', href: '#' },
-      { name: 'Accident Sometime', href: '#' },
-      { name: 'Some Us', href: '#' },
-      { name: 'USE', href: '#' },
-      { name: 'Simplye Us', href: '#' },
+      { name: "Many", href: "#" },
+      { name: "Accident Sometime", href: "#" },
+      { name: "Some Us", href: "#" },
+      { name: "USE", href: "#" },
+      { name: "Simplye Us", href: "#" },
     ],
     column2: [
-      { name: 'When Looking', href: '#' },
-      { name: 'Many Desktops', href: '#' },
-      { name: 'Sometimes By Accident', href: '#' },
+      { name: "When Looking", href: "#" },
+      { name: "Many Desktops", href: "#" },
+      { name: "Sometimes By Accident", href: "#" },
     ],
     column3: [
-      { name: 'Lorem Ipsum is simply dummy text of the printing and type.', href: '#' },
+      {
+        name: "Lorem Ipsum is simply dummy text of the printing and type.",
+        href: "#",
+      },
     ],
   };
 
@@ -119,8 +122,8 @@ export default function Footer() {
             </div>
             <div className="relative w-[22px] h-[22px]">
               <Image
-                src="/svgs/google.svg"
-                alt="Google"
+                src="/svgs/instagram.svg"
+                alt="Instagram"
                 fill
                 className="object-contain"
               />
@@ -139,4 +142,3 @@ export default function Footer() {
     </footer>
   );
 }
-
