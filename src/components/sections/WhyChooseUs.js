@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import { stats } from '@/lib/constants';
+import Image from "next/image";
+import { stats } from "@/lib/constants";
 
 export default function WhyChooseUs() {
   return (
@@ -15,7 +15,7 @@ export default function WhyChooseUs() {
           <div className="relative">
             <div className="relative h-[400px] sm:h-[500px] lg:h-[657px] rounded-[37px] overflow-hidden shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
               <Image
-                src="http://localhost:3845/assets/d4cbb1d5dc626ee7ea0205aae6343e7469a5e1a8.svg"
+                src="/svgs/why-choose-us-img.svg"
                 alt="Why Choose Us"
                 fill
                 className="object-cover"
@@ -26,11 +26,11 @@ export default function WhyChooseUs() {
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#0c456b] to-transparent p-6 lg:p-8">
               <ul className="space-y-3 lg:space-y-4">
                 {[
-                  'Proven Expertise',
-                  'Client-Focused Approach',
-                  'End-to-End Services',
-                  'Fast Delivery',
-                  'Quality & Precision',
+                  "Proven Expertise",
+                  "Client-Focused Approach",
+                  "End-to-End Services",
+                  "Fast Delivery",
+                  "Quality & Precision",
                 ].map((benefit, index) => (
                   <li
                     key={index}
@@ -73,4 +73,3 @@ export default function WhyChooseUs() {
     </section>
   );
 }
-
