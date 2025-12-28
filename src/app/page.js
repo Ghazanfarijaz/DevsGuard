@@ -1,29 +1,45 @@
-import Image from "next/image";
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import Hero from '@/components/sections/Hero';
+import ClientLogos from '@/components/sections/ClientLogos';
+import WhyChooseUs from '@/components/sections/WhyChooseUs';
+import OurApproach from '@/components/sections/OurApproach';
+import OurServices from '@/components/sections/OurServices';
+import Testimonials from '@/components/sections/Testimonials';
+import Newsletter from '@/components/sections/Newsletter';
+import CTA from '@/components/sections/CTA';
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <h1 className="text-4xl font-bold">DEVSGUARD</h1>
-
-        <p className="text-lg">
-          DEVSGUARD is a platform for developers to find and hire developers.
-        </p>
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file. start again from scratch.
-          </h1>
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-md">
-            Get Started
-          </button>
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-md">
-            Login
-          </button>
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-md">
-            Register
-          </button>
-        </div>
-      </main>
-    </div>
+    <main className="min-h-screen bg-[#f8f8f8]">
+      <Navbar currentPage="home" />
+      
+      {/* Hero Section */}
+      <Hero />
+      
+      {/* Client Logos Section */}
+      <ClientLogos />
+      
+      {/* Why Choose Us Section */}
+      <WhyChooseUs />
+      
+      {/* Our Approach Section */}
+      <OurApproach />
+      
+      {/* Our Services Section */}
+      <OurServices />
+      
+      {/* Testimonials Section */}
+      <Testimonials />
+      
+      {/* Newsletter Section */}
+      <Newsletter />
+      
+      {/* CTA Section */}
+      <CTA />
+      
+      {/* Footer */}
+      <Footer />
+    </main>
   );
 }
