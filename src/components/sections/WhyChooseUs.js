@@ -16,7 +16,7 @@ export default function WhyChooseUs() {
             {/* Icon - Centered at top */}
             <div className="relative w-24 h-24 lg:w-32 lg:h-32 mb-8 lg:mb-12">
               <Image
-                src="/svgs/why-choose-us-img.svg"
+                src="/svgs/why-choose-us-img-new.svg"
                 alt="Icon"
                 fill
                 className="object-contain"
