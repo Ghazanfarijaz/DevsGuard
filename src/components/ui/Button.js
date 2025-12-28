@@ -11,7 +11,7 @@ export default function Button({
   ...props
 }) {
   const baseStyles =
-    'inline-flex items-center justify-center font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2';
+    'inline-flex items-center justify-center font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer';
   
   const variants = {
     primary: 'bg-[#0c456b] text-white hover:bg-[#235784] rounded-md px-6 py-3',

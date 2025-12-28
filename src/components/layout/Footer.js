@@ -55,7 +55,7 @@ export default function Footer() {
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="hover:text-[#78d5ea] transition-colors"
+                    className="hover:text-[#78d5ea] transition-colors cursor-pointer"
                   >
                     {link.name}
                   </Link>
@@ -74,7 +74,7 @@ export default function Footer() {
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="hover:text-[#78d5ea] transition-colors"
+                    className="hover:text-[#78d5ea] transition-colors cursor-pointer"
                   >
                     {link.name}
                   </Link>

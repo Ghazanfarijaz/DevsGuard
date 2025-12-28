@@ -15,7 +15,7 @@ export default function Navbar({ currentPage = 'home' }) {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3">
+          <Link href="/" className="flex items-center space-x-3 cursor-pointer">
             <div className="relative w-10 h-10">
               <Image
                 src="/devslogo.svg"
@@ -36,7 +36,7 @@ export default function Navbar({ currentPage = 'home' }) {
               <Link
                 key={item.id}
                 href={item.href}
-                className={`relative font-medium text-[20px] transition-colors ${
+                className={`relative font-medium text-[20px] transition-colors cursor-pointer ${
                   currentPage === item.id
                     ? 'text-[#0c456b] font-semibold'
                     : 'text-[#2f2a2a]'
@@ -54,7 +54,7 @@ export default function Navbar({ currentPage = 'home' }) {
           <div className="hidden md:flex items-center space-x-4">
             <Link
               href="/login"
-              className="text-[#2f2a2a] font-semibold text-[20px] hover:text-[#0c456b] transition-colors"
+              className="text-[#2f2a2a] font-semibold text-[20px] hover:text-[#0c456b] transition-colors cursor-pointer"
             >
               Log in
             </Link>
@@ -65,7 +65,7 @@ export default function Navbar({ currentPage = 'home' }) {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-[#0c456b]"
+            className="md:hidden p-2 text-[#0c456b] cursor-pointer"
             aria-label="Toggle menu"
           >
             <svg

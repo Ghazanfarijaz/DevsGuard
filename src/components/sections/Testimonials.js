@@ -64,7 +64,7 @@ export default function Testimonials() {
           {/* Left Arrow */}
           <button
             onClick={prevTestimonial}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-[20px] w-10 h-10 flex items-center justify-center shadow-lg hover:bg-gray-100 transition-colors"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-[20px] w-10 h-10 flex items-center justify-center shadow-lg hover:bg-gray-100 transition-all duration-300 cursor-pointer"
             aria-label="Previous testimonial"
           >
             <svg
@@ -85,7 +85,7 @@ export default function Testimonials() {
           {/* Right Arrow */}
           <button
             onClick={nextTestimonial}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-[20px] w-10 h-10 flex items-center justify-center shadow-lg hover:bg-gray-100 transition-colors"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-[20px] w-10 h-10 flex items-center justify-center shadow-lg hover:bg-gray-100 transition-all duration-300 cursor-pointer"
             aria-label="Next testimonial"
           >
             <svg
@@ -106,9 +106,17 @@ export default function Testimonials() {
           {/* Testimonial Cards */}
           <div className="flex items-center justify-center gap-4 lg:gap-8 px-12 lg:px-20">
             {/* Left Card (Blurred) */}
-            <div className="hidden lg:block flex-1 max-w-[253px] opacity-50 blur-sm">
-              <div className="bg-[#638db4] rounded-[50px] p-6 h-[323px]">
-                <div className="w-16 h-16 rounded-full bg-gray-300 mx-auto mb-4" />
+            <div className="hidden lg:block flex-1 max-w-[253px] opacity-50 blur-sm transition-opacity duration-500">
+              <div className="bg-[#638db4] rounded-[50px] p-6 h-[323px] flex flex-col items-center">
+                <div className="w-16 h-16 rounded-full bg-white mx-auto mb-4 flex items-center justify-center overflow-hidden">
+                  <Image
+                    src={testimonials[(currentIndex - 1 + testimonials.length) % testimonials.length]?.image || 'http://localhost:3845/assets/95bb6d01e7fbb72c170ca0ca8ce9ebaf8175c33e.svg'}
+                    alt={testimonials[(currentIndex - 1 + testimonials.length) % testimonials.length]?.author}
+                    width={64}
+                    height={64}
+                    className="object-cover rounded-full"
+                  />
+                </div>
                 <p className="text-white text-xs line-clamp-6">
                   {testimonials[(currentIndex - 1 + testimonials.length) % testimonials.length]?.text}
                 </p>
@@ -116,15 +124,17 @@ export default function Testimonials() {
             </div>
 
             {/* Center Card (Active) */}
-            <div className="flex-1 max-w-[401px]">
+            <div className="flex-1 max-w-[401px] transition-all duration-500 ease-in-out">
               <div className="bg-[#638db4] rounded-[50px] p-6 lg:p-8 h-[400px] lg:h-[510px] flex flex-col items-center">
-                <div className="relative w-24 h-24 lg:w-[124px] lg:h-[124px] rounded-full mb-6 overflow-hidden">
-                  <Image
-                    src={testimonials[currentIndex].image}
-                    alt={testimonials[currentIndex].author}
-                    fill
-                    className="object-cover"
-                  />
+                <div className="relative w-24 h-24 lg:w-[124px] lg:h-[124px] rounded-full mb-6 bg-white p-1 flex items-center justify-center overflow-hidden">
+                  <div className="relative w-full h-full rounded-full overflow-hidden bg-white">
+                    <Image
+                      src={testimonials[currentIndex].image}
+                      alt={testimonials[currentIndex].author}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
                 <p className="text-white text-sm lg:text-[21.068px] leading-[31.602px] font-medium font-inter flex-1 overflow-y-auto">
                   {testimonials[currentIndex].text}
@@ -133,9 +143,17 @@ export default function Testimonials() {
             </div>
 
             {/* Right Card (Blurred) */}
-            <div className="hidden lg:block flex-1 max-w-[253px] opacity-50 blur-sm">
-              <div className="bg-[#638db4] rounded-[50px] p-6 h-[323px]">
-                <div className="w-16 h-16 rounded-full bg-gray-300 mx-auto mb-4" />
+            <div className="hidden lg:block flex-1 max-w-[253px] opacity-50 blur-sm transition-opacity duration-500">
+              <div className="bg-[#638db4] rounded-[50px] p-6 h-[323px] flex flex-col items-center">
+                <div className="w-16 h-16 rounded-full bg-white mx-auto mb-4 flex items-center justify-center overflow-hidden">
+                  <Image
+                    src={testimonials[(currentIndex + 1) % testimonials.length]?.image || 'http://localhost:3845/assets/95bb6d01e7fbb72c170ca0ca8ce9ebaf8175c33e.svg'}
+                    alt={testimonials[(currentIndex + 1) % testimonials.length]?.author}
+                    width={64}
+                    height={64}
+                    className="object-cover rounded-full"
+                  />
+                </div>
                 <p className="text-white text-xs line-clamp-6">
                   {testimonials[(currentIndex + 1) % testimonials.length]?.text}
                 </p>
@@ -149,7 +167,7 @@ export default function Testimonials() {
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`h-1.5 w-5 rounded-full transition-all ${
+                className={`h-1.5 w-5 rounded-full transition-all duration-300 cursor-pointer ${
                   index === currentIndex ? 'bg-[#51aec5] w-8' : 'bg-white/50'
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}

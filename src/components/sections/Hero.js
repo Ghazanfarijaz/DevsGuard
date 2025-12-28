@@ -7,7 +7,7 @@ export default function Hero() {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-[50px] overflow-hidden">
           {/* Background Image */}
-          <div className="relative h-[400px] sm:h-[600px] lg:h-[826px]">
+          <div className="relative h-[400px] sm:h-[600px] lg:h-[826px] bg-gradient-to-br from-[#0c456b] to-[#235784]">
             <Image
               src="/svgs/hero-bg.svg"
               alt="Technology Solutions"
@@ -17,9 +17,12 @@ export default function Hero() {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1440px"
             />
             {/* Light Overlay for better text readability */}
-            <div className="absolute inset-0 bg-black/20" />
+            <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
             {/* Border Overlay */}
-            <div className="absolute inset-0 border-2 border-black/30 rounded-[40px] pointer-events-none" />
+            <div
+              className="absolute inset-0 border-2 border-black/30 rounded-[40px] pointer-events-none"
+              aria-hidden="true"
+            />
           </div>
 
           {/* Content */}
