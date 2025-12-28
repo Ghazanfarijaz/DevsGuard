@@ -1,5 +1,8 @@
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import ProjectModal from '../ui/ProjectModal';
 
 const projects = [
   {
@@ -29,8 +32,22 @@ const projects = [
 ];
 
 export default function ProjectsList() {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleLearnMore = (project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedProject(null);
+  };
+
   return (
-    <section className="relative py-16 lg:py-24 overflow-hidden">
+    <>
+      <section className="relative py-16 lg:py-24 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="space-y-20 lg:space-y-32">
           {projects.map((project, index) => (
@@ -70,19 +87,27 @@ export default function ProjectsList() {
                       </span>
                     ))}
                   </p>
-                  <Link
-                    href={`/projects/${project.id}`}
+                  <button
+                    onClick={() => handleLearnMore(project)}
                     className="inline-flex items-center justify-center bg-white border border-[#0e4366] text-[#0c456b] text-[16px] font-extrabold font-inter px-9 py-5 rounded-[25px] shadow-[0px_4px_31px_0px_rgba(0,0,0,0.15)] hover:bg-gray-50 transition-colors cursor-pointer"
                   >
                     Learn More
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>
           ))}
         </div>
       </div>
-    </section>
+      </section>
+
+      {/* Project Modal */}
+      <ProjectModal
+        project={selectedProject}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+      />
+    </>
   );
 }
 

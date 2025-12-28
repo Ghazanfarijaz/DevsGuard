@@ -16,15 +16,6 @@ export default function ProjectsHero() {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1244px"
             />
           </div>
-
-          {/* Content - Centered */}
-          <div className="absolute inset-0 flex flex-col justify-center items-center z-20">
-            <h1 className="font-poppins font-bold text-white text-4xl sm:text-5xl lg:text-[48px] leading-normal text-center">
-              Our featured
-              <br />
-              Projects
-            </h1>
-          </div>
         </div>
       </div>
     </section>
