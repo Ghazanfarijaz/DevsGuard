@@ -1,41 +1,21 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 export default function ProjectModal({ project, isOpen, onClose }) {
-  const scrollContainerRef = useRef(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Prevent body scroll when modal is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      setCurrentImageIndex(0); // Reset to first image when modal opens
     } else {
       document.body.style.overflow = 'unset';
     }
     return () => {
       document.body.style.overflow = 'unset';
-    };
-  }, [isOpen]);
-
-  // Handle scroll to update custom scrollbar
-  useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
-
-    const handleScroll = () => {
-      const { scrollTop, scrollHeight, clientHeight } = container;
-      const scrollableHeight = scrollHeight - clientHeight;
-      const progress = scrollableHeight > 0 ? (scrollTop / scrollableHeight) * 100 : 0;
-      setScrollProgress(progress);
-    };
-
-    container.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial calculation
-
-    return () => {
-      container.removeEventListener('scroll', handleScroll);
     };
   }, [isOpen]);
 
@@ -55,10 +35,13 @@ We began by defining a clean system architecture focused on scalability and perf
 
 Tech Stack: React, Node.js, PostgreSQL, AWS`;
 
-  // Calculate scrollbar thumb height and position
-  const scrollbarHeight = 650; // Total scrollbar height
-  const thumbHeight = scrollbarHeight * 0.4; // 40% of scrollbar height
-  const thumbTop = (scrollbarHeight - thumbHeight) * (scrollProgress / 100);
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % projectImages.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + projectImages.length) % projectImages.length);
+  };
 
   return (
     <div
@@ -66,7 +49,7 @@ Tech Stack: React, Node.js, PostgreSQL, AWS`;
       onClick={onClose}
     >
       <div
-        className="relative bg-white rounded-[25px] w-[90vw] max-w-[1103px] h-[90vh] max-h-[772px] overflow-hidden shadow-2xl flex"
+        className="relative bg-white rounded-[25px] w-[90vw] max-w-[1103px] h-[90vh] max-h-[772px] overflow-hidden shadow-2xl flex flex-row"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -90,54 +73,79 @@ Tech Stack: React, Node.js, PostgreSQL, AWS`;
           </svg>
         </button>
 
-        {/* Left Side - Scrollable Image Gallery */}
-        <div className="relative w-[336px] bg-[#88adcf] overflow-hidden flex-shrink-0">
-          {/* Custom Scrollbar - Left side */}
-          <div className="absolute left-[60px] top-[62px] bottom-[62px] w-[5px] z-20 pointer-events-none">
-            {/* Scrollbar Track (white background) */}
-            <div className="absolute inset-0 bg-white rounded-full" />
-            {/* Scrollbar Thumb (blue, positioned based on scroll) */}
-            <div
-              className="absolute bg-[#0c456b] rounded-full transition-all duration-100"
-              style={{
-                top: `${thumbTop}px`,
-                height: `${thumbHeight}px`,
-                width: '100%',
-              }}
-            />
+        {/* Left Side - Image Carousel (Always on left) */}
+        <div className="relative w-[400px] lg:w-[500px] bg-[#88adcf] overflow-hidden flex-shrink-0 flex items-center justify-center">
+          {/* Current Image */}
+          <div className="relative w-full h-full flex items-center justify-center p-8">
+            <div className="relative w-full h-full max-h-[600px] rounded-[50px] overflow-hidden shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] bg-[#88adcf]">
+              <Image
+                src={projectImages[currentImageIndex]}
+                alt={`${project.title} - Image ${currentImageIndex + 1}`}
+                fill
+                className="object-cover transition-opacity duration-500"
+                sizes="(max-width: 1024px) 400px, 500px"
+              />
+            </div>
           </div>
 
-          {/* Scrollable Images Container */}
-          <div
-            ref={scrollContainerRef}
-            className="h-full overflow-y-auto custom-scrollbar-hide"
-            style={{
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none',
-              paddingLeft: '105px',
-              paddingRight: '105px',
-            }}
+          {/* Left Arrow */}
+          <button
+            onClick={prevImage}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white rounded-[20px] w-10 h-10 flex items-center justify-center shadow-lg hover:bg-gray-100 transition-all duration-300 cursor-pointer"
+            aria-label="Previous image"
           >
-            <div className="py-[60px] space-y-[49px]">
-              {projectImages.map((img, index) => (
-                <div
-                  key={index}
-                  className="relative h-[302px] rounded-[50px] overflow-hidden shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] bg-[#88adcf]"
-                >
-                  <Image
-                    src={img}
-                    alt={`${project.title} - Image ${index + 1}`}
-                    fill
-                    className="object-cover"
-                    sizes="336px"
-                  />
-                </div>
-              ))}
-            </div>
+            <svg
+              className="w-6 h-6 text-[#0c456b]"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+
+          {/* Right Arrow */}
+          <button
+            onClick={nextImage}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white rounded-[20px] w-10 h-10 flex items-center justify-center shadow-lg hover:bg-gray-100 transition-all duration-300 cursor-pointer"
+            aria-label="Next image"
+          >
+            <svg
+              className="w-6 h-6 text-[#0c456b]"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
+
+          {/* Pagination Dots */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
+            {projectImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentImageIndex(index)}
+                className={`h-2 w-2 rounded-full transition-all duration-300 cursor-pointer ${
+                  index === currentImageIndex ? 'bg-white w-8' : 'bg-white/50'
+                }`}
+                aria-label={`Go to image ${index + 1}`}
+              />
+            ))}
           </div>
         </div>
 
-        {/* Right Side - Project Details */}
+        {/* Right Side - Project Details (Always on right) */}
         <div className="flex-1 p-8 lg:p-12 overflow-y-auto">
           <h2 className="font-inter font-bold text-[#293842] text-3xl sm:text-4xl lg:text-[32px] mb-8">
             {project.title}
