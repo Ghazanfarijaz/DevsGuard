@@ -13,8 +13,9 @@ export default function Testimonials() {
     if (isAnimating) return;
     setIsAnimating(true);
     setDirection(1); // Next - current slides left, next slides in from right
+    // Update index immediately so new card shows correct data
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
     setTimeout(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
       setDirection(0);
       setIsAnimating(false);
     }, 700); // Match animation duration
@@ -24,8 +25,9 @@ export default function Testimonials() {
     if (isAnimating) return;
     setIsAnimating(true);
     setDirection(-1); // Prev - current slides right, prev slides in from left
+    // Update index immediately so new card shows correct data
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
     setTimeout(() => {
-      setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
       setDirection(0);
       setIsAnimating(false);
     }, 700); // Match animation duration
@@ -126,40 +128,71 @@ export default function Testimonials() {
 
               {/* Center Card (Active) - Slide animation with two cards visible during transition */}
               <div className="flex-1 max-w-[401px] relative overflow-hidden h-[400px] lg:h-[510px]">
-                {/* Current Card - slides out */}
-                <div 
-                  className={`absolute inset-0 duration-700 ease-in-out ${
-                    direction === 1 
-                      ? '-translate-x-full' 
-                      : direction === -1 
-                      ? 'translate-x-full' 
-                      : 'translate-x-0'
-                  }`}
-                  style={{
-                    zIndex: direction === 0 ? 10 : 5,
-                  }}
-                >
-                  <div className="bg-[#638db4] rounded-[50px] p-6 lg:p-8 h-full flex flex-col items-center">
-                    <div className="relative w-24 h-24 lg:w-[124px] lg:h-[124px] rounded-full mb-4 bg-white p-1 flex items-center justify-center overflow-hidden flex-shrink-0">
-                      <div className="relative w-full h-full rounded-full overflow-hidden bg-white">
-                        <Image
-                          src={testimonials[currentIndex].image}
-                          alt={testimonials[currentIndex].author}
-                          fill
-                          className="object-cover"
-                        />
+                {/* Current Card - visible when not animating */}
+                {direction === 0 && (
+                  <div 
+                    className="absolute inset-0 translate-x-0"
+                    style={{
+                      zIndex: 10,
+                    }}
+                  >
+                    <div className="bg-[#638db4] rounded-[50px] p-6 lg:p-8 h-full flex flex-col items-center">
+                      <div className="relative w-24 h-24 lg:w-[124px] lg:h-[124px] rounded-full mb-4 bg-white p-1 flex items-center justify-center overflow-hidden flex-shrink-0">
+                        <div className="relative w-full h-full rounded-full overflow-hidden bg-white">
+                          <Image
+                            src={testimonials[currentIndex].image}
+                            alt={testimonials[currentIndex].author}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                      </div>
+                      <h3 className="text-white text-base lg:text-[18px] font-bold font-inter mb-4 flex-shrink-0">
+                        {testimonials[currentIndex].author}
+                      </h3>
+                      <div className="flex-1 w-full overflow-y-auto pr-3 testimonial-scrollbar">
+                        <p className="text-white text-sm lg:text-[21.068px] leading-[31.602px] font-medium font-inter">
+                          {testimonials[currentIndex].text}
+                        </p>
                       </div>
                     </div>
-                    <h3 className="text-white text-base lg:text-[18px] font-bold font-inter mb-4 flex-shrink-0">
-                      {testimonials[currentIndex].author}
-                    </h3>
-                    <div className="flex-1 w-full overflow-y-auto pr-3 testimonial-scrollbar">
-                      <p className="text-white text-sm lg:text-[21.068px] leading-[31.602px] font-medium font-inter">
-                        {testimonials[currentIndex].text}
-                      </p>
+                  </div>
+                )}
+
+                {/* Old Card - slides out during animation (shows previous index) */}
+                {direction !== 0 && (
+                  <div 
+                    className={`absolute inset-0 duration-700 ease-in-out ${
+                      direction === 1 
+                        ? '-translate-x-full' 
+                        : 'translate-x-full'
+                    }`}
+                    style={{
+                      zIndex: 5,
+                    }}
+                  >
+                    <div className="bg-[#638db4] rounded-[50px] p-6 lg:p-8 h-full flex flex-col items-center">
+                      <div className="relative w-24 h-24 lg:w-[124px] lg:h-[124px] rounded-full mb-4 bg-white p-1 flex items-center justify-center overflow-hidden flex-shrink-0">
+                        <div className="relative w-full h-full rounded-full overflow-hidden bg-white">
+                          <Image
+                            src={testimonials[direction === 1 ? (currentIndex - 1 + testimonials.length) % testimonials.length : (currentIndex + 1) % testimonials.length].image}
+                            alt={testimonials[direction === 1 ? (currentIndex - 1 + testimonials.length) % testimonials.length : (currentIndex + 1) % testimonials.length].author}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                      </div>
+                      <h3 className="text-white text-base lg:text-[18px] font-bold font-inter mb-4 flex-shrink-0">
+                        {testimonials[direction === 1 ? (currentIndex - 1 + testimonials.length) % testimonials.length : (currentIndex + 1) % testimonials.length].author}
+                      </h3>
+                      <div className="flex-1 w-full overflow-y-auto pr-3 testimonial-scrollbar">
+                        <p className="text-white text-sm lg:text-[21.068px] leading-[31.602px] font-medium font-inter">
+                          {testimonials[direction === 1 ? (currentIndex - 1 + testimonials.length) % testimonials.length : (currentIndex + 1) % testimonials.length].text}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
 
                 {/* Next/Previous Card - slides in from opposite side (only visible during animation) */}
                 {direction !== 0 && (
