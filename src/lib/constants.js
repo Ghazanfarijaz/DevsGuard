@@ -131,7 +131,7 @@ export const testimonials = [
     text: "Devs Guard has been a game-changer for our team. Their custom solutions have streamlined our operations and boosted productivity. The development process was smooth, and the team was responsive to our needs. We've seen significant improvements in our efficiency and customer satisfaction.",
     author: "Brad Behlow",
     image:
-      "https://res.cloudinary.com/dmdaa1heq/image/upload/v1748271555/Konnectd_Icon_Reversed_eh0c6p.png",
+      "https://res.cloudinary.com/dmdaa1heq/image/upload/v1767021169/T033P80250V-U033S5ESH19-bfd16a84427e-512_xqyii1.png",
   },
   {
     id: 2,
@@ -142,10 +142,10 @@ export const testimonials = [
   },
   {
     id: 3,
-    text: "Third testimonial highlighting our expertise and commitment to delivering quality solutions.",
-    author: "Client Name 3",
+    text: "Devs Guard is a team of experts that have helped us build a scalable and efficient solution for our business.",
+    author: "Elon Musk",
     image:
-      "http://localhost:3845/assets/95bb6d01e7fbb72c170ca0ca8ce9ebaf8175c33e.svg",
+      "https://res.cloudinary.com/dmdaa1heq/image/upload/v1748271228/samples/people/kitchen-bar.jpg",
   },
 ];
 
