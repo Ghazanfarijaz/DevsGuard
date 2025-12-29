@@ -8,6 +8,11 @@ const nextConfig = {
         port: '3845',
         pathname: '/assets/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '/**',
+      },
     ],
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
