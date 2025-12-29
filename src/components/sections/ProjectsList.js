@@ -11,7 +11,7 @@ const projects = [
     description:
       'We designed and developed a scalable analytics platform that helps businesses track performance metrics in real time. Our focus was on speed, clarity, and long-term scalability, resulting in a system capable of handling high data volumes with minimal latency. The final product enabled the client to make faster, data-driven decisions and scale confidently as user demand grew.',
     image: 'http://localhost:3845/assets/752f2ba327108f0bd64d237955edcc559bde602b.png',
-    bgGradient: 'bg-gradient-to-r from-[#0c456b]',
+    bgGradient: 'bg-gradient-to-r from-[#1787d1] to-[#0c456b]',
   },
   {
     id: 2,
