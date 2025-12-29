@@ -128,17 +128,17 @@ export const benefits = [
 export const testimonials = [
   {
     id: 1,
-    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survi",
-    author: "Client Name",
+    text: "Devs Guard has been a game-changer for our team. Their custom solutions have streamlined our operations and boosted productivity. The development process was smooth, and the team was responsive to our needs. We've seen significant improvements in our efficiency and customer satisfaction.",
+    author: "Brad Behlow",
     image:
-      "http://localhost:3845/assets/95bb6d01e7fbb72c170ca0ca8ce9ebaf8175c33e.svg",
+      "https://res.cloudinary.com/dmdaa1heq/image/upload/v1748271555/Konnectd_Icon_Reversed_eh0c6p.png",
   },
   {
     id: 2,
-    text: "Another testimonial about our excellent service and how we helped transform their business with our technology solutions.",
-    author: "Client Name 2",
+    text: "Devs Guard is a team of experts that have helped us build a scalable and efficient solution for our business. The development process was smooth, and the team was responsive to our needs. We've seen significant improvements in our efficiency and customer satisfaction.",
+    author: "Michael Jordan",
     image:
-      "http://localhost:3845/assets/95bb6d01e7fbb72c170ca0ca8ce9ebaf8175c33e.svg",
+      "https://res.cloudinary.com/dmdaa1heq/image/upload/v1748271235/samples/smile.jpg",
   },
   {
     id: 3,
