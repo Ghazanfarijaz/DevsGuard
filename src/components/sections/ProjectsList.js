@@ -75,21 +75,28 @@ export default function ProjectsList() {
                 </div>
 
                 {/* Text Content - positioned to align with gradient card */}
-                <div className="flex-1 text-white lg:pt-[86px]">
-                  <h2 className="font-inter font-bold text-3xl sm:text-4xl lg:text-[32px] mb-6 leading-normal">
+                <div className="flex-1 text-white lg:pt-[86px] flex flex-col" style={{ maxHeight: '367px' }}>
+                  <h2 className="font-inter font-bold text-3xl sm:text-4xl lg:text-[32px] mb-6 leading-normal flex-shrink-0">
                     {project.title}
                   </h2>
-                  <p className="font-inter font-medium text-base sm:text-lg lg:text-[16.744px] leading-[31.395px] mb-8 max-w-[621px]">
-                    {project.description.split('\n').map((line, i, arr) => (
-                      <span key={i}>
-                        {line}
-                        {i < arr.length - 1 && <br />}
-                      </span>
-                    ))}
-                  </p>
+                  <div className="relative flex-1 mb-8 max-w-[621px] overflow-hidden">
+                    {/* Fade-out gradient overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[rgba(23,135,209,1)] to-transparent pointer-events-none z-10" />
+                    {/* Scrollable description */}
+                    <div className="overflow-y-auto max-h-[200px] pr-2 custom-scrollbar" style={{ scrollbarWidth: 'thin' }}>
+                      <p className="font-inter font-medium text-base sm:text-lg lg:text-[16.744px] leading-[31.395px]">
+                        {project.description.split('\n').map((line, i, arr) => (
+                          <span key={i}>
+                            {line}
+                            {i < arr.length - 1 && <br />}
+                          </span>
+                        ))}
+                      </p>
+                    </div>
+                  </div>
                   <button
                     onClick={() => handleLearnMore(project)}
-                    className="inline-flex items-center justify-center bg-white border border-[#0e4366] text-[#0c456b] text-[16px] font-extrabold font-inter px-9 py-5 rounded-[25px] shadow-[0px_4px_31px_0px_rgba(0,0,0,0.15)] hover:bg-gray-50 transition-colors cursor-pointer"
+                    className="inline-flex items-center justify-center bg-white border border-[#0e4366] text-[#0c456b] text-[16px] font-extrabold font-inter px-9 py-5 rounded-[25px] shadow-[0px_4px_31px_0px_rgba(0,0,0,0.15)] hover:bg-gray-50 transition-colors cursor-pointer flex-shrink-0 self-start"
                   >
                     Learn More
                   </button>

@@ -56,21 +56,21 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar styles for project modal */
+/* Custom scrollbar styles */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 5px;
+  width: 4px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #0c456b;
+  background: rgba(255, 255, 255, 0.5);
   border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #235784;
+  background: rgba(255, 255, 255, 0.7);
 }
