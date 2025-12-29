@@ -7,24 +7,33 @@ import { testimonials } from '@/lib/constants';
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [direction, setDirection] = useState(0); // 1: next, -1: prev, 0: none
 
   const nextTestimonial = () => {
     if (isAnimating) return;
     setIsAnimating(true);
+    setDirection(1); // Next - current slides left, next slides in from right
     setTimeout(() => {
       setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+      setDirection(0);
       setIsAnimating(false);
-    }, 300);
+    }, 700); // Match animation duration
   };
 
   const prevTestimonial = () => {
     if (isAnimating) return;
     setIsAnimating(true);
+    setDirection(-1); // Prev - current slides right, prev slides in from left
     setTimeout(() => {
       setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+      setDirection(0);
       setIsAnimating(false);
-    }, 300);
+    }, 700); // Match animation duration
   };
+
+  // Get the next/previous index for the sliding card
+  const getNextIndex = () => (currentIndex + 1) % testimonials.length;
+  const getPrevIndex = () => (currentIndex - 1 + testimonials.length) % testimonials.length;
 
   return (
     <section className="relative py-16 lg:py-24 overflow-hidden bg-[#0c456b]">
@@ -115,14 +124,22 @@ export default function Testimonials() {
                 </div>
               </div>
 
-              {/* Center Card (Active) - Fade and slide animation */}
-              <div className="flex-1 max-w-[401px] relative">
+              {/* Center Card (Active) - Slide animation with two cards visible during transition */}
+              <div className="flex-1 max-w-[401px] relative overflow-hidden h-[400px] lg:h-[510px]">
+                {/* Current Card - slides out */}
                 <div 
-                  className={`transition-all duration-300 ease-in-out ${
-                    isAnimating ? 'opacity-0 translate-x-4' : 'opacity-100 translate-x-0'
+                  className={`absolute inset-0 duration-700 ease-in-out ${
+                    direction === 1 
+                      ? '-translate-x-full' 
+                      : direction === -1 
+                      ? 'translate-x-full' 
+                      : 'translate-x-0'
                   }`}
+                  style={{
+                    zIndex: direction === 0 ? 10 : 5,
+                  }}
                 >
-                  <div className="bg-[#638db4] rounded-[50px] p-6 lg:p-8 h-[400px] lg:h-[510px] flex flex-col items-center">
+                  <div className="bg-[#638db4] rounded-[50px] p-6 lg:p-8 h-full flex flex-col items-center">
                     <div className="relative w-24 h-24 lg:w-[124px] lg:h-[124px] rounded-full mb-4 bg-white p-1 flex items-center justify-center overflow-hidden flex-shrink-0">
                       <div className="relative w-full h-full rounded-full overflow-hidden bg-white">
                         <Image
@@ -133,11 +150,9 @@ export default function Testimonials() {
                         />
                       </div>
                     </div>
-                    {/* Author Name */}
                     <h3 className="text-white text-base lg:text-[18px] font-bold font-inter mb-4 flex-shrink-0">
                       {testimonials[currentIndex].author}
                     </h3>
-                    {/* Scrollable Text */}
                     <div className="flex-1 w-full overflow-y-auto pr-3 testimonial-scrollbar">
                       <p className="text-white text-sm lg:text-[21.068px] leading-[31.602px] font-medium font-inter">
                         {testimonials[currentIndex].text}
@@ -145,6 +160,40 @@ export default function Testimonials() {
                     </div>
                   </div>
                 </div>
+
+                {/* Next/Previous Card - slides in from opposite side (only visible during animation) */}
+                {direction !== 0 && (
+                  <div 
+                    key={`slide-${direction}-${direction === 1 ? getNextIndex() : getPrevIndex()}`}
+                    className="absolute inset-0"
+                    style={{
+                      zIndex: 10,
+                      transform: direction === 1 ? 'translateX(100%)' : 'translateX(-100%)',
+                      animation: direction === 1 ? 'slideInFromRight 700ms ease-in-out forwards' : 'slideInFromLeft 700ms ease-in-out forwards',
+                    }}
+                  >
+                    <div className="bg-[#638db4] rounded-[50px] p-6 lg:p-8 h-full flex flex-col items-center">
+                      <div className="relative w-24 h-24 lg:w-[124px] lg:h-[124px] rounded-full mb-4 bg-white p-1 flex items-center justify-center overflow-hidden flex-shrink-0">
+                        <div className="relative w-full h-full rounded-full overflow-hidden bg-white">
+                          <Image
+                            src={testimonials[direction === 1 ? getNextIndex() : getPrevIndex()].image}
+                            alt={testimonials[direction === 1 ? getNextIndex() : getPrevIndex()].author}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                      </div>
+                      <h3 className="text-white text-base lg:text-[18px] font-bold font-inter mb-4 flex-shrink-0">
+                        {testimonials[direction === 1 ? getNextIndex() : getPrevIndex()].author}
+                      </h3>
+                      <div className="flex-1 w-full overflow-y-auto pr-3 testimonial-scrollbar">
+                        <p className="text-white text-sm lg:text-[21.068px] leading-[31.602px] font-medium font-inter">
+                          {testimonials[direction === 1 ? getNextIndex() : getPrevIndex()].text}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Right Card (Blurred) */}
@@ -185,4 +234,3 @@ export default function Testimonials() {
     </section>
   );
 }
-

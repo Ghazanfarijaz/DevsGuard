@@ -103,3 +103,38 @@ html {
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.6) rgba(255, 255, 255, 0.1);
 }
+
+/* Slide animations for testimonials */
+.slide-out-left {
+  transform: translateX(-100%);
+}
+
+.slide-out-right {
+  transform: translateX(100%);
+}
+
+.slide-in-from-right {
+  animation: slideInFromRight 0.3s ease-in-out forwards;
+}
+
+.slide-in-from-left {
+  animation: slideInFromLeft 0.3s ease-in-out forwards;
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
