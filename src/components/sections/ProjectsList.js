@@ -3,36 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import ProjectModal from "../ui/ProjectModal";
-
-const projects = [
-  {
-    id: 1,
-    title: "Project 1",
-    description:
-      "We designed and developed a scalable analytics platform that helps businesses track performance metrics in real time. Our focus was on speed, clarity, and long-term scalability, resulting in a system capable of handling high data volumes with minimal latency. The final product enabled the client to make faster, data-driven decisions and scale confidently as user demand grew.",
-    image:
-      "https://res.cloudinary.com/dmdaa1heq/image/upload/v1766885483/Group_587_q73fny.png",
-    bgGradient: "bg-gradient-to-r from-[#1787d1] to-[#0c456b]",
-  },
-  {
-    id: 2,
-    title: "Project 2",
-    description:
-      "We built a cross-platform mobile application that delivers personalized workout plans and progress tracking. By prioritizing user experience and performance, we ensured smooth navigation and fast load times across devices. The app launched successfully on both iOS and Android, helping the client rapidly grow their user base after release.",
-    image:
-      "http://localhost:3845/assets/7edf6717e97b5eb8766752abed5ce758a396281b.png",
-    bgGradient: "bg-gradient-to-r from-[#1787d1] to-[#0c456b]",
-  },
-  {
-    id: 3,
-    title: "Project 3",
-    description:
-      "We reimagined the client's dashboard to improve usability and reduce friction for everyday users. Through user research and iterative design, we simplified complex workflows into an intuitive interface. The redesign significantly improved engagement and reduced task completion time.\nDeliverables: UX Research, Wireframes, High-Fidelity UI",
-    image:
-      "http://localhost:3845/assets/752f2ba327108f0bd64d237955edcc559bde602b.png",
-    bgGradient: "bg-gradient-to-r from-[#1787d1] to-[#0c456b]",
-  },
-];
+import { projects } from "@/lib/constants";
 
 export default function ProjectsList() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -68,7 +39,7 @@ export default function ProjectsList() {
                     <div className="absolute inset-0">
                       <div className="absolute inset-0 bg-[#d9d9d9]" />
                       <Image
-                        src={project.image}
+                        src={project.images[0]}
                         alt={project.title}
                         fill
                         className="object-cover"

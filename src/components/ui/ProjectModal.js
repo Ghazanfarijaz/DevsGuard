@@ -21,13 +21,8 @@ export default function ProjectModal({ project, isOpen, onClose }) {
 
   if (!isOpen || !project) return null;
 
-  // Sample images for the gallery (you can replace with actual project images)
-  const projectImages = [
-    project.image,
-    'http://localhost:3845/assets/7edf6717e97b5eb8766752abed5ce758a396281b.png',
-    'http://localhost:3845/assets/752f2ba327108f0bd64d237955edcc559bde602b.png',
-    'http://localhost:3845/assets/7edf6717e97b5eb8766752abed5ce758a396281b.png',
-  ];
+  // Use project images array, or fallback to single image if images array doesn't exist
+  const projectImages = project.images || (project.image ? [project.image] : []);
 
   const fullDescription = `We designed and developed a scalable analytics platform that helps businesses track performance metrics in real time. Our focus was on speed, clarity, and long-term scalability, resulting in a system capable of handling high data volumes with minimal latency. The final product enabled the client to make faster, data-driven decisions and scale confidently as user demand grew.
 
