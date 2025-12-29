@@ -56,25 +56,24 @@ export default function ProjectsList() {
                     <h2 className="font-inter font-bold text-3xl sm:text-4xl lg:text-[32px] mb-6 leading-normal flex-shrink-0">
                       {project.title}
                     </h2>
-                    <div className="relative flex-1 mb-8 max-w-[621px] overflow-hidden">
-                      {/* Fade-out gradient overlay */}
-                      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[rgba(23,135,209,1)] to-transparent pointer-events-none z-10" />
-                      {/* Scrollable description */}
-                      <div
-                        className="overflow-y-auto max-h-[200px] pr-2 custom-scrollbar"
-                        style={{ scrollbarWidth: "thin" }}
+                    <div className="relative flex-1 mb-8 max-w-[621px]">
+                      <p
+                        className="font-inter font-medium text-base sm:text-lg lg:text-[16.744px] leading-[31.395px] line-clamp-4"
+                        style={{
+                          display: "-webkit-box",
+                          WebkitLineClamp: 4,
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                        }}
                       >
-                        <p className="font-inter font-medium text-base sm:text-lg lg:text-[16.744px] leading-[31.395px]">
-                          {project.description
-                            .split("\n")
-                            .map((line, i, arr) => (
-                              <span key={i}>
-                                {line}
-                                {i < arr.length - 1 && <br />}
-                              </span>
-                            ))}
-                        </p>
-                      </div>
+                        {project.description.split("\n").map((line, i, arr) => (
+                          <span key={i}>
+                            {line}
+                            {i < arr.length - 1 && <br />}
+                          </span>
+                        ))}
+                      </p>
                     </div>
                     <button
                       onClick={() => handleLearnMore(project)}
