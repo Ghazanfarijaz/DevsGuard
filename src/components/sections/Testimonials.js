@@ -106,7 +106,7 @@ export default function Testimonials() {
             {/* Center Card (Active) */}
             <div className="flex-1 max-w-[401px] transition-all duration-500 ease-in-out">
               <div className="bg-[#638db4] rounded-[50px] p-6 lg:p-8 h-[400px] lg:h-[510px] flex flex-col items-center">
-                <div className="relative w-24 h-24 lg:w-[124px] lg:h-[124px] rounded-full mb-6 bg-white p-1 flex items-center justify-center overflow-hidden">
+                <div className="relative w-24 h-24 lg:w-[124px] lg:h-[124px] rounded-full mb-4 bg-white p-1 flex items-center justify-center overflow-hidden flex-shrink-0">
                   <div className="relative w-full h-full rounded-full overflow-hidden bg-white">
                     <Image
                       src={testimonials[currentIndex].image}
@@ -116,9 +116,16 @@ export default function Testimonials() {
                     />
                   </div>
                 </div>
-                <p className="text-white text-sm lg:text-[21.068px] leading-[31.602px] font-medium font-inter flex-1 overflow-y-auto">
-                  {testimonials[currentIndex].text}
-                </p>
+                {/* Author Name */}
+                <h3 className="text-white text-base lg:text-[18px] font-bold font-inter mb-4 flex-shrink-0">
+                  {testimonials[currentIndex].author}
+                </h3>
+                {/* Scrollable Text */}
+                <div className="flex-1 w-full overflow-y-auto pr-3 testimonial-scrollbar">
+                  <p className="text-white text-sm lg:text-[21.068px] leading-[31.602px] font-medium font-inter">
+                    {testimonials[currentIndex].text}
+                  </p>
+                </div>
               </div>
             </div>
 
