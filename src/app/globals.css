@@ -77,7 +77,7 @@ html {
 
 /* Testimonial scrollbar - styled according to theme */
 .testimonial-scrollbar::-webkit-scrollbar {
-  width: 8px;
+  width: 5px;
 }
 
 .testimonial-scrollbar::-webkit-scrollbar-track {
@@ -89,7 +89,7 @@ html {
 .testimonial-scrollbar::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.6);
   border-radius: 10px;
-  border: 2px solid rgba(99, 141, 180, 0.3);
+  border: 1px solid rgba(99, 141, 180, 0.3);
   transition: background 0.2s ease;
 }
 
