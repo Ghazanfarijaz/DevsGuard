@@ -125,6 +125,53 @@ export const benefits = [
   "Quality & Precision",
 ];
 
+export const testimonials = [
+  {
+    id: 1,
+    text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survi",
+    author: "Client Name",
+    image:
+      "http://localhost:3845/assets/95bb6d01e7fbb72c170ca0ca8ce9ebaf8175c33e.svg",
+  },
+  {
+    id: 2,
+    text: "Another testimonial about our excellent service and how we helped transform their business with our technology solutions.",
+    author: "Client Name 2",
+    image:
+      "http://localhost:3845/assets/95bb6d01e7fbb72c170ca0ca8ce9ebaf8175c33e.svg",
+  },
+  {
+    id: 3,
+    text: "Third testimonial highlighting our expertise and commitment to delivering quality solutions.",
+    author: "Client Name 3",
+    image:
+      "http://localhost:3845/assets/95bb6d01e7fbb72c170ca0ca8ce9ebaf8175c33e.svg",
+  },
+];
+
+export const clientLogos = [
+  { id: 1, name: "Client 1", logo: "/svgs/client-logo-1.svg" },
+  { id: 2, name: "Client 2", logo: "/svgs/client-logo-2.svg" },
+  { id: 3, name: "Client 3", logo: "/svgs/client-logo-3.svg" },
+  { id: 4, name: "Client 4", logo: "/svgs/client-logo-4.svg" },
+  { id: 5, name: "Client 5", logo: "/svgs/client-logo-5.svg" },
+  { id: 6, name: "Client 6", logo: "/svgs/client-logo-6.svg" },
+];
+
+export const heroContent = {
+  title: "Technology solutions that fuel your growth",
+  ctaText: "View our work",
+  ctaLink: "/projects",
+  backgroundImage: "/svgs/hero-bg.svg",
+};
+
+export const ctaContent = {
+  title: "Ready to transform your business?",
+  description: "Let's discuss how we can help you achieve your goals",
+  buttonText: "Get Started",
+  buttonLink: "/contact",
+};
+
 export const projects = [
   {
     id: 1,

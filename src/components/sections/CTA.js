@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Button from '../ui/Button';
+import { ctaContent } from '@/lib/constants';
 
 export default function CTA() {
   return (
@@ -34,18 +35,17 @@ export default function CTA() {
               {/* Text Content - Left Side */}
               <div className="flex-1 text-left">
                 <p className="text-[#0c456b] text-2xl sm:text-3xl lg:text-[40px] font-bold font-poppins leading-relaxed">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting
-                  indus.
+                  {ctaContent.title}
                 </p>
               </div>
 
               {/* Button - Right Side */}
               <div className="flex-shrink-0">
                 <Button
-                  href="/contact"
+                  href={ctaContent.buttonLink}
                   className="bg-[#235784] border border-[#0c456b] text-white text-[24px] font-bold font-inter px-8 py-4 rounded-[100px] hover:bg-[#1a4568] transition-colors inline-flex items-center gap-3"
                 >
-                  Use to touch with
+                  {ctaContent.buttonText}
                   <svg
                     className="w-5 h-5"
                     fill="none"

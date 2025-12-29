@@ -2,30 +2,10 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { testimonials } from '@/lib/constants';
 
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const testimonials = [
-    {
-      id: 1,
-      text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survi",
-      author: 'Client Name',
-      image: 'http://localhost:3845/assets/95bb6d01e7fbb72c170ca0ca8ce9ebaf8175c33e.svg',
-    },
-    {
-      id: 2,
-      text: "Another testimonial about our excellent service and how we helped transform their business with our technology solutions.",
-      author: 'Client Name 2',
-      image: 'http://localhost:3845/assets/95bb6d01e7fbb72c170ca0ca8ce9ebaf8175c33e.svg',
-    },
-    {
-      id: 3,
-      text: "Third testimonial highlighting our expertise and commitment to delivering quality solutions.",
-      author: 'Client Name 3',
-      image: 'http://localhost:3845/assets/95bb6d01e7fbb72c170ca0ca8ce9ebaf8175c33e.svg',
-    },
-  ];
 
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);

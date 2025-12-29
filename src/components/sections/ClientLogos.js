@@ -1,4 +1,6 @@
 import Button from '../ui/Button';
+import Image from 'next/image';
+import { clientLogos } from '@/lib/constants';
 
 export default function ClientLogos() {
   return (
@@ -19,13 +21,22 @@ export default function ClientLogos() {
         {/* Logo Carousel */}
         <div className="relative overflow-hidden py-8">
           <div className="flex items-center justify-center space-x-8 sm:space-x-12 lg:space-x-16 animate-scroll">
-            {/* Client Logos - These would be actual logo images */}
-            {[1, 2, 3, 4, 5, 6].map((i) => (
+            {/* Client Logos */}
+            {clientLogos.map((client) => (
               <div
-                key={i}
-                className="flex-shrink-0 w-24 h-12 sm:w-32 sm:h-16 lg:w-40 lg:h-20 bg-gray-200 rounded flex items-center justify-center"
+                key={client.id}
+                className="flex-shrink-0 w-24 h-12 sm:w-32 sm:h-16 lg:w-40 lg:h-20 bg-gray-200 rounded flex items-center justify-center relative overflow-hidden"
               >
-                <span className="text-gray-400 text-xs">Logo {i}</span>
+                {client.logo ? (
+                  <Image
+                    src={client.logo}
+                    alt={client.name}
+                    fill
+                    className="object-contain p-2"
+                  />
+                ) : (
+                  <span className="text-gray-400 text-xs">{client.name}</span>
+                )}
               </div>
             ))}
           </div>

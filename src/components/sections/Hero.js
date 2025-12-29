@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Button from "../ui/Button";
+import { heroContent } from "@/lib/constants";
 
 export default function Hero() {
   return (
@@ -9,7 +10,7 @@ export default function Hero() {
           {/* Background Image */}
           <div className="relative h-[400px] sm:h-[600px] lg:h-[826px] bg-gradient-to-br from-[#0c456b] to-[#235784]">
             <Image
-              src="/svgs/hero-bg.svg"
+              src={heroContent.backgroundImage}
               alt="Technology Solutions"
               fill
               className="object-cover"
@@ -35,11 +36,11 @@ export default function Hero() {
               fuel your growth
             </h1>
             <Button
-              href="/projects"
+              href={heroContent.ctaLink}
               variant="primary"
               className="bg-[#0c456b] rounded-[50px] px-8 py-3 text-base sm:text-lg"
             >
-              View our work
+              {heroContent.ctaText}
               <svg
                 className="ml-2 w-4 h-4"
                 fill="none"
