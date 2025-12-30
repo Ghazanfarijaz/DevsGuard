@@ -1,5 +1,6 @@
 import { Inter, Poppins, Rufina } from "next/font/google";
 import "./globals.css";
+import { ToastProvider } from "@/components/ui/ToastContainer";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -33,7 +34,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${poppins.variable} ${rufina.variable} antialiased`}
       >
-        {children}
+        <ToastProvider>
+          {children}
+        </ToastProvider>
       </body>
     </html>
   );
