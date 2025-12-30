@@ -175,7 +175,11 @@ export const clientLogos = [
     name: "Client 5",
     logo: "https://res.cloudinary.com/dmdaa1heq/image/upload/v1767092704/android-chrome-512x512_uwwg5s.png",
   },
-  { id: 6, name: "Client 6", logo: "/svgs/client-logo-6.svg" },
+  {
+    id: 6,
+    name: "Client 6",
+    logo: "https://res.cloudinary.com/dmdaa1heq/image/upload/v1767092773/images_j7qd5s.png",
+  },
 ];
 
 export const heroContent = {
