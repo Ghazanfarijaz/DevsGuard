@@ -44,8 +44,9 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-[16.744px] leading-[31.395px] text-white/90">
-              Leading software development company delivering innovative solutions 
-              for businesses worldwide. We transform ideas into digital excellence.
+              Leading software development company delivering innovative
+              solutions for businesses worldwide. We transform ideas into
+              digital excellence.
             </p>
           </div>
 
@@ -91,7 +92,7 @@ export default function Footer() {
           <div>
             <h3 className="text-[26.163px] font-bold mb-4">Get In Touch</h3>
             <p className="text-[18.837px] leading-[31.395px] mb-4">
-              Ready to start your next project? Let's discuss how we can help 
+              Ready to start your next project? Let's discuss how we can help
               bring your vision to life.
             </p>
             <Link

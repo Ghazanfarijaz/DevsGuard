@@ -150,9 +150,21 @@ export const testimonials = [
 ];
 
 export const clientLogos = [
-  { id: 1, name: "Client 1", logo: "/svgs/client-logo-1.svg" },
-  { id: 2, name: "Client 2", logo: "/svgs/client-logo-2.svg" },
-  { id: 3, name: "Client 3", logo: "/svgs/client-logo-3.svg" },
+  {
+    id: 1,
+    name: "Brad Behlow",
+    logo: "https://res.cloudinary.com/dmdaa1heq/image/upload/v1748271555/Konnectd_Icon_Reversed_eh0c6p.png",
+  },
+  {
+    id: 2,
+    name: "Grag Jones",
+    logo: "https://res.cloudinary.com/dmdaa1heq/image/upload/v1767092509/Arnio_Logo_r6gu8f.png",
+  },
+  {
+    id: 3,
+    name: "Client 3",
+    logo: "https://res.cloudinary.com/dmdaa1heq/image/upload/v1748271228/samples/cloudinary-icon.png",
+  },
   { id: 4, name: "Client 4", logo: "/svgs/client-logo-4.svg" },
   { id: 5, name: "Client 5", logo: "/svgs/client-logo-5.svg" },
   { id: 6, name: "Client 6", logo: "/svgs/client-logo-6.svg" },
