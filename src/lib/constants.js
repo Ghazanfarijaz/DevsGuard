@@ -165,8 +165,16 @@ export const clientLogos = [
     name: "Client 3",
     logo: "https://res.cloudinary.com/dmdaa1heq/image/upload/v1748271228/samples/cloudinary-icon.png",
   },
-  { id: 4, name: "Client 4", logo: "/svgs/client-logo-4.svg" },
-  { id: 5, name: "Client 5", logo: "/svgs/client-logo-5.svg" },
+  {
+    id: 4,
+    name: "Client 4",
+    logo: "https://res.cloudinary.com/dmdaa1heq/image/upload/v1767092672/Logo_wrhgwv.png",
+  },
+  {
+    id: 5,
+    name: "Client 5",
+    logo: "https://res.cloudinary.com/dmdaa1heq/image/upload/v1767092704/android-chrome-512x512_uwwg5s.png",
+  },
   { id: 6, name: "Client 6", logo: "/svgs/client-logo-6.svg" },
 ];
 
