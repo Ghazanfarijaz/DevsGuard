@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { useToast } from "@/components/ui/ToastContainer";
 
 // Dynamically import Map component to avoid SSR issues
 const Map = dynamic(() => import("../ui/Map"), { ssr: false });
@@ -16,6 +17,9 @@ export default function ContactForm() {
     service: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const { showToast } = useToast();
 
   const handleChange = (e) => {
     setFormData({
@@ -24,10 +28,42 @@ export default function ContactForm() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+    
+    // Simulate API call
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      
+      // Here you would make an actual API call
+      // const response = await fetch('/api/contact', {
+      //   method: 'POST',
+      //   body: JSON.stringify(formData),
+      // });
+      
+      setIsSuccess(true);
+      showToast('Message sent successfully! We\'ll get back to you soon.', 'success');
+      
+      // Reset form
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        service: "",
+        message: "",
+      });
+      
+      // Reset success state after 3 seconds
+      setTimeout(() => {
+        setIsSuccess(false);
+      }, 3000);
+    } catch (error) {
+      showToast('Something went wrong. Please try again.', 'error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -148,7 +184,8 @@ export default function ContactForm() {
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleChange}
-                    className="w-full h-[57px] bg-[rgba(0,0,0,0.05)] border border-[#aeaeb2] rounded-[20px] px-4 font-poppins font-extralight text-[#382222] text-[16px] focus:outline-none focus:ring-2 focus:ring-[#0c456b]"
+                    disabled={isSubmitting || isSuccess}
+                    className="w-full h-[57px] bg-[rgba(0,0,0,0.05)] border border-[#aeaeb2] rounded-[20px] px-4 font-poppins font-extralight text-[#382222] text-[16px] focus:outline-none focus:ring-2 focus:ring-[#0c456b] disabled:opacity-60 disabled:cursor-not-allowed"
                     required
                   />
                 </div>
@@ -161,7 +198,8 @@ export default function ContactForm() {
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleChange}
-                    className="w-full h-[57px] bg-[rgba(0,0,0,0.05)] border border-[#aeaeb2] rounded-[20px] px-4 font-poppins font-extralight text-[#382222] text-[16px] focus:outline-none focus:ring-2 focus:ring-[#0c456b]"
+                    disabled={isSubmitting || isSuccess}
+                    className="w-full h-[57px] bg-[rgba(0,0,0,0.05)] border border-[#aeaeb2] rounded-[20px] px-4 font-poppins font-extralight text-[#382222] text-[16px] focus:outline-none focus:ring-2 focus:ring-[#0c456b] disabled:opacity-60 disabled:cursor-not-allowed"
                     required
                   />
                 </div>
@@ -177,7 +215,8 @@ export default function ContactForm() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full h-[57px] bg-[rgba(0,0,0,0.05)] border border-[#aeaeb2] rounded-[20px] px-4 font-poppins font-extralight text-[#382222] text-[16px] focus:outline-none focus:ring-2 focus:ring-[#0c456b]"
+                  disabled={isSubmitting || isSuccess}
+                  className="w-full h-[57px] bg-[rgba(0,0,0,0.05)] border border-[#aeaeb2] rounded-[20px] px-4 font-poppins font-extralight text-[#382222] text-[16px] focus:outline-none focus:ring-2 focus:ring-[#0c456b] disabled:opacity-60 disabled:cursor-not-allowed"
                   required
                 />
               </div>
@@ -194,7 +233,8 @@ export default function ContactForm() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full h-[57px] bg-[rgba(0,0,0,0.05)] border border-[#aeaeb2] rounded-[20px] px-4 font-poppins font-extralight text-[#382222] text-[16px] focus:outline-none focus:ring-2 focus:ring-[#0c456b]"
+                    disabled={isSubmitting || isSuccess}
+                    className="w-full h-[57px] bg-[rgba(0,0,0,0.05)] border border-[#aeaeb2] rounded-[20px] px-4 font-poppins font-extralight text-[#382222] text-[16px] focus:outline-none focus:ring-2 focus:ring-[#0c456b] disabled:opacity-60 disabled:cursor-not-allowed"
                     placeholder="000-000-0000"
                     required
                   />
@@ -208,7 +248,8 @@ export default function ContactForm() {
                     name="service"
                     value={formData.service}
                     onChange={handleChange}
-                    className="w-full h-[57px] bg-[rgba(0,0,0,0.05)] border border-[#aeaeb2] rounded-[20px] px-4 font-poppins font-extralight text-[#382222] text-[16px] focus:outline-none focus:ring-2 focus:ring-[#0c456b]"
+                    disabled={isSubmitting || isSuccess}
+                    className="w-full h-[57px] bg-[rgba(0,0,0,0.05)] border border-[#aeaeb2] rounded-[20px] px-4 font-poppins font-extralight text-[#382222] text-[16px] focus:outline-none focus:ring-2 focus:ring-[#0c456b] disabled:opacity-60 disabled:cursor-not-allowed"
                   />
                 </div>
               </div>
@@ -223,7 +264,8 @@ export default function ContactForm() {
                   value={formData.message}
                   onChange={handleChange}
                   rows={6}
-                  className="w-full h-[185px] bg-[rgba(0,0,0,0.05)] border border-[#aeaeb2] rounded-[20px] px-4 py-4 font-poppins font-extralight text-[#382222] text-[16px] focus:outline-none focus:ring-2 focus:ring-[#0c456b] resize-none"
+                  disabled={isSubmitting || isSuccess}
+                  className="w-full h-[185px] bg-[rgba(0,0,0,0.05)] border border-[#aeaeb2] rounded-[20px] px-4 py-4 font-poppins font-extralight text-[#382222] text-[16px] focus:outline-none focus:ring-2 focus:ring-[#0c456b] resize-none disabled:opacity-60 disabled:cursor-not-allowed"
                   required
                 />
               </div>
@@ -232,9 +274,33 @@ export default function ContactForm() {
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="bg-[#0e4366] text-white font-poppins font-medium text-[16px] px-12 py-4 rounded-[25px] shadow-[0px_0px_14px_0px_rgba(0,0,0,0.12)] hover:bg-[#0c456b] transition-colors cursor-pointer"
+                  disabled={isSubmitting || isSuccess}
+                  className={`text-white font-poppins font-medium text-[16px] px-12 py-4 rounded-[25px] shadow-[0px_0px_14px_0px_rgba(0,0,0,0.12)] transition-all cursor-pointer flex items-center gap-2 ${
+                    isSubmitting
+                      ? 'bg-[#0c456b] cursor-not-allowed'
+                      : isSuccess
+                      ? 'bg-green-500'
+                      : 'bg-[#0e4366] hover:bg-[#0c456b]'
+                  }`}
                 >
-                  Send Message
+                  {isSubmitting ? (
+                    <>
+                      <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Sending...
+                    </>
+                  ) : isSuccess ? (
+                    <>
+                      <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      Message Sent!
+                    </>
+                  ) : (
+                    'Send Message'
+                  )}
                 </button>
               </div>
             </form>
