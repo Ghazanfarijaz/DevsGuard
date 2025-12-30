@@ -64,15 +64,9 @@ export default function Navbar({ currentPage = 'home' }) {
           </div>
 
           {/* Right Side Actions */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Link
-              href="/login"
-              className="text-[#2f2a2a] font-semibold text-[20px] hover:text-[#0c456b] transition-colors cursor-pointer"
-            >
-              Log in
-            </Link>
-            <Button variant="ghost" href="/get-started">
-              Get started
+          <div className="hidden md:flex items-center">
+            <Button variant="ghost" href="/contact">
+              Get In Touch
             </Button>
           </div>
 
@@ -138,22 +132,15 @@ export default function Navbar({ currentPage = 'home' }) {
             ))}
 
             {/* Mobile Actions */}
-            <div className="pt-4 space-y-3 border-t border-gray-200">
-              <Link
-                href="/login"
-                onClick={closeMobileMenu}
-                className="block py-2 px-4 text-[#2f2a2a] font-semibold text-[18px] hover:text-[#0c456b] transition-colors cursor-pointer rounded-lg hover:bg-gray-100"
-              >
-                Log in
-              </Link>
+            <div className="pt-4 border-t border-gray-200">
               <div className="px-4">
                 <Button
                   variant="ghost"
-                  href="/get-started"
+                  href="/contact"
                   onClick={closeMobileMenu}
                   className="w-full justify-center"
                 >
-                  Get started
+                  Get In Touch
                 </Button>
               </div>
             </div>
