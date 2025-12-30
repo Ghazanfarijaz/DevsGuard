@@ -66,12 +66,12 @@ export default function Newsletter({ variant = 'card' }) {
             <button
               type="submit"
               disabled={isSubmitting || isSuccess}
-              className={`text-[#0c456b] text-[20px] font-medium font-poppins px-8 py-4 rounded-[20px] transition-all whitespace-nowrap cursor-pointer w-full sm:w-[156px] ${
+              className={`text-[#0c456b] text-[20px] font-medium font-poppins px-8 py-4 rounded-[20px] transition-all whitespace-nowrap cursor-pointer w-full sm:w-[156px] relative overflow-hidden ${
                 isSubmitting
                   ? 'bg-[#5fc5d8] cursor-not-allowed'
                   : isSuccess
                   ? 'bg-green-500 text-white'
-                  : 'bg-[#78d5ea] hover:bg-[#5fc5d8]'
+                  : 'bg-[#78d5ea] hover:bg-[#5fc5d8] active:scale-95 active:shadow-inner'
               }`}
             >
               {isSubmitting ? (
@@ -128,12 +128,12 @@ export default function Newsletter({ variant = 'card' }) {
             <button
               type="submit"
               disabled={isSubmitting || isSuccess}
-              className={`text-[#0c456b] text-[20px] font-medium font-poppins px-8 py-4 rounded-[20px] transition-all whitespace-nowrap cursor-pointer ${
+              className={`text-[#0c456b] text-[20px] font-medium font-poppins px-8 py-4 rounded-[20px] transition-all whitespace-nowrap cursor-pointer relative overflow-hidden ${
                 isSubmitting
                   ? 'bg-[#5fc5d8] cursor-not-allowed'
                   : isSuccess
                   ? 'bg-green-500 text-white'
-                  : 'bg-[#78d5ea] hover:bg-[#5fc5d8]'
+                  : 'bg-[#78d5ea] hover:bg-[#5fc5d8] active:scale-95 active:shadow-inner'
               }`}
             >
               {isSubmitting ? (

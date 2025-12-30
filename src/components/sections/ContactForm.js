@@ -275,12 +275,12 @@ export default function ContactForm() {
                 <button
                   type="submit"
                   disabled={isSubmitting || isSuccess}
-                  className={`text-white font-poppins font-medium text-[16px] px-12 py-4 rounded-[25px] shadow-[0px_0px_14px_0px_rgba(0,0,0,0.12)] transition-all cursor-pointer flex items-center gap-2 ${
+                  className={`text-white font-poppins font-medium text-[16px] px-12 py-4 rounded-[25px] shadow-[0px_0px_14px_0px_rgba(0,0,0,0.12)] transition-all cursor-pointer flex items-center gap-2 relative overflow-hidden ${
                     isSubmitting
                       ? 'bg-[#0c456b] cursor-not-allowed'
                       : isSuccess
                       ? 'bg-green-500'
-                      : 'bg-[#0e4366] hover:bg-[#0c456b]'
+                      : 'bg-[#0e4366] hover:bg-[#0c456b] active:scale-95 active:shadow-inner'
                   }`}
                 >
                   {isSubmitting ? (
