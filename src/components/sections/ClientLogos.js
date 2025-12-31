@@ -25,7 +25,7 @@ export default function ClientLogos() {
             {clientLogos.map((client) => (
               <div
                 key={client.id}
-                className="flex-shrink-0 w-24 h-12 sm:w-32 sm:h-16 lg:w-40 lg:h-20 bg-gray-200 rounded flex items-center justify-center relative overflow-hidden"
+                className="flex-shrink-0 w-24 h-12 sm:w-32 sm:h-16 lg:w-40 lg:h-20 flex items-center justify-center relative overflow-hidden"
               >
                 {client.logo ? (
                   <Image
